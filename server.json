@@ -3,7 +3,7 @@
   "name": "io.github.sandeepkelvadi/marketing-skills-directory",
   "title": "Marketing Skills Directory",
   "description": "Search, browse & read 340+ Claude Code marketing & SEO skills from any MCP client.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://marketingskills.directory/",
   "repository": {
     "url": "https://github.com/sandeepkelvadi/mkt-skills",
