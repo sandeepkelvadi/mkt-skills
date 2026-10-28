@@ -1,0 +1,43 @@
+{
+  "name": "mkt-skills",
+  "version": "1.3.0",
+  "description": "Install Claude Code marketing skills from marketingskills.directory",
+  "type": "module",
+  "bin": {
+    "mkt-skills": "bin/mkt-skills.mjs"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "marketing",
+    "seo",
+    "ai",
+    "cli",
+    "video",
+    "remotion"
+  ],
+  "author": "Thrivemattic",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeepkelvadi/mkt-skills.git",
+    "directory": "cli"
+  },
+  "homepage": "https://marketingskills.directory",
+  "bugs": {
+    "url": "https://github.com/sandeepkelvadi/mkt-skills/issues"
+  }
+}
