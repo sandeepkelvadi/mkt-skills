@@ -1,13 +1,14 @@
 import { createInterface } from "readline";
-import { mkdir, rm, writeFile, readFile } from "fs/promises";
+import { mkdir, mkdtemp, rm, writeFile, readFile } from "fs/promises";
 import { existsSync } from "fs";
 import { join, dirname } from "path";
-import { execSync } from "child_process";
+import { execSync, execFileSync } from "child_process";
+import { tmpdir } from "os";
 import { bold, dim, green, red, cyan } from "./ui.mjs";
 
 const TEMPLATE_REPO = "https://github.com/sandeepkelvadi/tm-videogen-template.git";
 const TEMPLATE_BRANCH = "main";
-const TEMPLATE_DIR = "/tmp/.tm-videogen-template";
+let TEMPLATE_DIR; // private temp dir, created per run in cloneTemplate()
 
 async function question(query) {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
@@ -105,10 +106,8 @@ function exec(cmd, cwd) {
 }
 
 async function cloneTemplate() {
-  if (existsSync(TEMPLATE_DIR)) {
-    await rm(TEMPLATE_DIR, { recursive: true, force: true });
-  }
-  execSync(`git clone --depth=1 --branch ${TEMPLATE_BRANCH} ${TEMPLATE_REPO} "${TEMPLATE_DIR}"`, { stdio: "pipe" });
+  TEMPLATE_DIR = await mkdtemp(join(tmpdir(), "tm-videogen-"));
+  execFileSync("git", ["clone", "--depth=1", "--branch", TEMPLATE_BRANCH, TEMPLATE_REPO, TEMPLATE_DIR], { stdio: "pipe" });
 }
 
 export async function video(args) {

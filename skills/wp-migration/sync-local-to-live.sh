@@ -112,7 +112,8 @@ print(f"  Escaped \\\\n found: {backslash_n} (will be unescaped after push if ne
 
 # Extract image URLs
 imgs = sorted(set(re.findall(r'wp-content/uploads/[^\"\s]+\.(jpg|jpeg|png|webp)', content)))
-img_filenames = sorted(set(re.findall(r'wp-content/uploads/\d{4}/\d{2}/([^\"\s]+)', content)))
+# Plain file names only: no slashes or "..", so a name cannot write outside images/.
+img_filenames = sorted(set(re.findall(r'wp-content/uploads/\d{4}/\d{2}/([A-Za-z0-9][A-Za-z0-9._-]*\.[A-Za-z0-9]+)', content)))
 
 with open('$PAYLOAD_FILE', 'w') as f:
     json.dump({'content': content}, f)
