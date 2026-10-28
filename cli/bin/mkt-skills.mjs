@@ -37,7 +37,7 @@ if (!command || command === '--help' || command === '-h') {
 }
 
 if (command === '--version' || command === '-v') {
-  console.log('mkt-skills 1.3.0');
+  console.log('mkt-skills 1.3.1');
   process.exit(0);
 }
 

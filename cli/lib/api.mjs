@@ -8,7 +8,7 @@ async function request(path) {
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
       signal: controller.signal,
-      headers: { 'User-Agent': 'mkt-skills-cli/1.3.0' },
+      headers: { 'User-Agent': 'mkt-skills-cli/1.3.1' },
     });
     return res;
   } finally {
